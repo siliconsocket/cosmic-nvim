@@ -13,6 +13,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   command = [[%s/\s\+$//e]],
   group = group,
 })
+g.tmpl_search_paths = {'~/.config/nvim/lua/cosmic/config/templates'} --vim-templates
 
 g.mapleader = ' '
 

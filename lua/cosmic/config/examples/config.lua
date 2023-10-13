@@ -8,8 +8,6 @@ local config = {
   border = 'rounded',
   -- LSP settings
   lsp = {
-    -- Enable/disable inlay hints
-    inlay_hint = false,
     -- True/false or table of filetypes {'.ts', '.js',}
     format_on_save = true,
     -- Time in MS before format timeout
@@ -131,7 +129,7 @@ local config = {
     'ggandor/lightspeed.nvim',
     {
       'romgrk/barbar.nvim',
-      dependencies = { 'kyazdani42/nvim-web-devicons' },
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
   },
 }

@@ -29,6 +29,8 @@ require('lazy').setup('cosmic.plugins', {
         'rrhelper',
         'spellfile_plugin',
         'matchit',
+        'auto-session',
+        'nvim-tree',
       },
     },
   },

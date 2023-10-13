@@ -71,7 +71,6 @@ return {
 
         map('n', '<leader>vtb', gs.toggle_current_line_blame, { desc = 'Toggle blame (virtual text)' })
         map('n', '<leader>vtd', gs.toggle_deleted, { desc = 'Toggle deleted' })
-
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
       end,

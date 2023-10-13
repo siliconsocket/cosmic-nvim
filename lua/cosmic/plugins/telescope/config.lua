@@ -21,8 +21,19 @@ local opts_cursor = {
   layout_strategy = 'cursor',
   results_title = false,
   layout_config = {
-    width = 0.5,
-    height = 0.4,
+    width = 0.9,
+    height = 0.55,
+  },
+}
+
+local opts_horizontal = {
+  initial_mode = 'normal',
+  sorting_strategy = 'ascending',
+  layout_strategy = 'vertical',
+  results_title = false,
+  layout_config = {
+    width = 0.9,
+    height = 0.55,
   },
 }
 
@@ -32,18 +43,18 @@ local opts_vertical = {
   layout_strategy = 'vertical',
   results_title = false,
   layout_config = {
-    width = 0.3,
-    height = 0.5,
-    prompt_position = 'top',
-    mirror = true,
+    width = 0.9,
+    height = 0.9,
+    prompt_position = 'bottom',
+    mirror = false,
   },
 }
 
 local opts_flex = {
   layout_strategy = 'flex',
   layout_config = {
-    width = 0.7,
-    height = 0.7,
+    width = 0.9,
+    height = 0.55,
   },
 }
 
@@ -69,6 +80,25 @@ require('telescope').setup(u.merge({
     },
   },
   extensions = {
+    file_browser = {
+      initial_mode = 'normal',
+      sorting_strategy = 'ascending',
+      prompt_title = '🗄️  File Explorer 🗄️',
+      layout_strategy = 'vertical',
+      layout_config = {
+        vertical = { width = 0.9, height = 0.55 },
+        prompt_position = 'bottom',
+        mirror = false,
+      },
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          
+        },
+      },
+    },
     fzf = {
       fuzzy = true, -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
@@ -78,8 +108,8 @@ require('telescope').setup(u.merge({
     },
   },
   pickers = {
-    buffers = u.merge(opts_flex, {
-      prompt_title = '✨ Search Buffers ✨',
+    buffers = u.merge(opts_vertical, {
+      prompt_title = '📁 Search Buffers',
       mappings = u.merge({
         n = {
           ['d'] = actions.delete_buffer,
@@ -91,10 +121,10 @@ require('telescope').setup(u.merge({
     lsp_code_actions = u.merge(opts_cursor, {
       prompt_title = 'Code Actions',
     }),
-    lsp_range_code_actions = u.merge(opts_vertical, {
+    lsp_range_code_actions = u.merge(opts_cursor, {
       prompt_title = 'Code Actions',
     }),
-    lsp_document_diagnostics = u.merge(opts_vertical, {
+    lsp_document_diagnostics = u.merge(opts_cursor, {
       prompt_title = 'Document Diagnostics',
       mappings = default_mappings,
     }),
@@ -102,7 +132,7 @@ require('telescope').setup(u.merge({
       prompt_title = 'Implementations',
       mappings = default_mappings,
     }),
-    lsp_definitions = u.merge(opts_cursor, {
+    lsp_definitions = u.merge(opts_vertical, {
       prompt_title = 'Definitions',
       mappings = default_mappings,
     }),
@@ -110,28 +140,29 @@ require('telescope').setup(u.merge({
       prompt_title = 'References',
       mappings = default_mappings,
     }),
-    find_files = u.merge(opts_flex, {
-      prompt_title = '✨ Search Project ✨',
+    find_files = u.merge(opts_vertical, {
+      prompt_title = '🔎  Search Project',
       mappings = default_mappings,
       hidden = true,
     }),
-    diagnostics = u.merge(opts_vertical, {
+    diagnostics = u.merge(opts_horizontal, {
       mappings = default_mappings,
     }),
-    git_files = u.merge(opts_flex, {
-      prompt_title = '✨ Search Git Project ✨',
+    git_files = u.merge(opts_vertical, {
+      prompt_title = '🌴 Search Git Project 🌴',
       mappings = default_mappings,
       hidden = true,
     }),
-    live_grep = u.merge(opts_flex, {
-      prompt_title = '✨ Live Grep ✨',
+    live_grep = u.merge(opts_vertical, {
+      prompt_title = '🚀 Live Grep 🔥',
       mappings = default_mappings,
     }),
     grep_string = u.merge(opts_vertical, {
-      prompt_title = '✨ Grep String ✨',
+      prompt_title = '🔥 Grep String 🚀',
       mappings = default_mappings,
     }),
   },
 }, user_config.plugins.telescope or {}))
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('file_browser')

@@ -33,11 +33,6 @@ function M.init(client, bufnr)
   -- hover
   buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = 'Show documentation' })
 
-  -- inlay hints
-  if client.supports_method('textDocument/inlayHint') then
-    buf_map('n', '<leader>lh', lsp_utils.toggle_inlay_hints(), { desc = 'Toggle inlay hints for buffer' })
-  end
-
   -- code actions
   buf_map('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename' })
   buf_map('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_actions()<cr>', { desc = 'Code Actions' })

@@ -9,3 +9,7 @@ vim.api.nvim_create_autocmd('VimResized', {
 vim.cmd([[
   command! CosmicUpdate lua require('cosmic.utils.cosmic').update()
 ]])
+
+vim.api.nvim_exec([[
+let g:tmpl_search_paths = ['~/.config/nvim/lua/cosmic/config/templates']
+]], false)

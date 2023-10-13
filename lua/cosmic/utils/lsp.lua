@@ -31,7 +31,7 @@ function M.format(bufnr)
 end
 
 function M.get_active_lsp_client_names()
-  local active_clients = vim.lsp.get_clients()
+  local active_clients = vim.lsp.get_active_clients()
   local client_names = {}
   for _, client in pairs(active_clients or {}) do
     local buf = vim.api.nvim_get_current_buf()
@@ -67,14 +67,6 @@ function M.get_lsp_status_str()
   end
 
   return client_str
-end
-
-function M.toggle_inlay_hints()
-  local enabled = user_config.lsp.inlay_hint
-  return function()
-    enabled = not enabled
-    vim.lsp.inlay_hint(vim.api.nvim_get_current_buf() or 0, enabled)
-  end
 end
 
 return M
